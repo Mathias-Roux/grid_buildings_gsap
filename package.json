@@ -1,0 +1,17 @@
+{ 
+  "name": "parcel-boilerplate",
+  "description": "boilerplate parcel, gsap, splittingjs",
+  "scripts": {
+    "start": "parcel src/index.html --open",
+    "clean": "rm -rf dist/*",
+    "build:parcel": "parcel build src/index.html --no-content-hash --no-source-map --publi-url ./",
+    "build": "npm run clean && npm run build:parcel"
+  },
+  "devDependencies": {
+    "parcel": "^2.5.0"
+  },
+  "dependencies": {
+    "gsap": "^3.10.4",
+    "splitting": "^1.0.6"
+  }
+}
