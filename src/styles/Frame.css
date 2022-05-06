@@ -1,21 +1,26 @@
 .frame{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   text-align: center;
   padding: 1rem 2vw;
+
 }
 
 .frame__nav{
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-around;
+  width: 300px;
 }
 
-.nav__left{
-  padding-right: 10px;
+.frame__signature, .frame__title--wrap{
+  margin-bottom: 10px;
 }
 
 @media screen and (min-width: 53em){
   .frame{
     display: flex;
     justify-content: space-around;
+    flex-direction: row;
   }
 }
