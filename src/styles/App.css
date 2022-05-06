@@ -14,7 +14,7 @@ body{
   color: white;
   -webkit-font-smoothing: antialised;
   -moz-osx-font-smoothing: grayscale;
-  /*overflow: hidden;*/
+  overflow: hidden;
 }
 
 a{
