@@ -1,0 +1,21 @@
+.frame{
+  text-align: center;
+  padding: 1rem 2vw;
+}
+
+.frame__nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav__left{
+  padding-right: 10px;
+}
+
+@media screen and (min-width: 53em){
+  .frame{
+    display: flex;
+    justify-content: space-around;
+  }
+}

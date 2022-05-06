@@ -1,0 +1,42 @@
+.grid__content{
+  display: none;
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+}
+
+.grid__content--current{
+  display: grid;
+  grid-template-columns: repeat(4,25%);
+  grid-auto-rows: 19vmin;
+  padding: 1.5vw;
+  grid-gap: 1em;
+  overflow: visible;
+  opacity: 1; 
+}
+
+.content__photo--c1-r1{
+  grid-column: 1; grid-row: 1 / 5;
+  overflow: hidden;
+}
+
+.content__photo--c1-r1 > img{
+  object-fit: cover;
+  width: 100%;
+    height: 95%;
+    overflow: hidden;
+}
+
+.grid__paragraph, .grid__index {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 2vw;
+  overflow: hidden;
+}
+
+.c2-r1{grid-column: 2 / 5; grid-row: 1; font-size: 9vw;}
+.c2-r2{grid-column: 2 / 4; grid-row: 2;}
+.c2-r3{grid-column: 2 / 4; grid-row: 3;}
+.c2-r4{grid-column: 2 / 4; grid-row: 4; font-style: italic;}
+
+.c4-r4{grid-column: 4; grid-row: 4; display: flex;}

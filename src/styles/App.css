@@ -1,0 +1,23 @@
+*,
+*::after,
+*::before{
+  box-sizing: border-box;
+}
+
+body{
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: $bg-color;
+  font-family: 'Philosopher', sans-serif;
+  color: white;
+  -webkit-font-smoothing: antialised;
+  -moz-osx-font-smoothing: grayscale;
+  overflow: hidden;
+}
+
+
+a{
+  cursor: pointer;
+}
