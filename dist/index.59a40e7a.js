@@ -533,8 +533,6 @@ var _splittingCellsCss = require("splitting/dist/splitting-cells.css");
 var _splitting = require("splitting");
 var _splittingDefault = parcelHelpers.interopDefault(_splitting);
 _splittingDefault.default();
-const links = document.querySelectorAll('.nav__link');
-const contents = document.querySelectorAll('.grid__content');
 console.clear();
 let DOM = {
     content: {
@@ -570,14 +568,11 @@ let DOM = {
         }
     },
     links: {
-        evolution: {
-            anchor: document.querySelector('a.evolution__link')
-        },
-        duplex: {
-            anchor: document.querySelector('a.dulpex__link')
-        },
-        orange: {
-            anchor: document.querySelector('a.orange__link')
+        nav: {
+            anchors: document.querySelectorAll('.nav__link'),
+            get stateElement () {
+                return this.anchor.children;
+            }
         }
     }
 };
@@ -587,11 +582,11 @@ let DOM = {
 // }
 // const timeline = gsap.timeline({paused: true})
 // 	.addLabel('start')
-// 	.staggerTo( DOM.content.evolution.chars, timelineSettings.charsDuration, {
+// 	.staggerTo( DOM.content[].chars, timelineSettings.charsDuration, {
 // 		ease: 'Power3.easeIn',
 // 		y: '-100%',
 // 		opacity: 0
-// 	}, timelineSettings.staggerValue, 'start') 
+// }, timelineSettings.staggerValue, 'start') 
 // 	.staggerTo( DOM.content.duplex.chars, timelineSettings.charsDuration, {
 // 		ease: 'Power3.easeIn',
 // 		y: '-100%',
@@ -609,23 +604,18 @@ let DOM = {
 // 		DOM.content.evolution.section.classList.toggle('grid__content--current')
 // 	})
 // 	.set
-links.forEach((link1)=>{
-    link1.addEventListener('click', (event)=>{
-        //add remove current style
-        links.forEach((link)=>{
-            link.classList.remove('nav__link--current');
-        });
-        link1.classList.add('nav__link--current');
-        //return index of selected link
-        var selected = Array.from(links).indexOf(link1);
-        _gsap.gsap.to(contents, 0.5, {
-            opacity: 0,
-            delay: 0.5
-        });
-        _gsap.gsap.to(contents[selected], 0.5, {
-            opacity: 1,
-            delay: 0.5
-        });
+const links = DOM.links.nav.anchors;
+const switchContent = (index)=>{
+    // console.log(Object.keys(DOM.content)[index])
+    const selected = Object.keys(DOM.content)[index];
+    links[index].classList[DOM.content[selected].isVisible ? 'remove' : 'add']('nav__link--current');
+    DOM.content[selected].isVisible = !DOM.content[selected].isVisible;
+};
+// console.log(DOM.links.nav.anchor)
+links.forEach((link)=>{
+    link.addEventListener("click", ()=>{
+        let index = Array.from(links).indexOf(link);
+        switchContent(index);
     });
 });
 
