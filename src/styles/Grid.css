@@ -5,11 +5,11 @@
   position: absolute;
   padding: 1.5vw;
   grid-gap: 1em;
-  overflow: visible;
+  overflow: hidden;
   opacity: 0; 
 }
 
-.grid > div:first-of-type {
+.grid__content--current {
   opacity: 1;
 }
 
