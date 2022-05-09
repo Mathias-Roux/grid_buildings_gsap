@@ -89,8 +89,17 @@ const links = DOM.links.nav.anchors
 const switchContent = (index) => {
 	// console.log(Object.keys(DOM.content)[index])
 	const selected = Object.keys(DOM.content)[index]
-	links[index].classList[DOM.content[selected].isVisible ? 'remove' : 'add']('nav__link--current')
+	links.forEach( link => {
+		link.classList.remove('nav__link--current')
+	})
+	links[index].classList.add('nav__link--current')
+	if (DOM.content[selected].isVisible === true) return 
 	DOM.content[selected].isVisible = !DOM.content[selected].isVisible
+
+	// console.log('current',DOM.content[selected].isVisible)
+	// console.log('evolution' ,DOM.content.evolution.isVisible)
+	// console.log('duplex' ,DOM.content.duplex.isVisible)
+	// console.log('orange' ,DOM.content.orange.isVisible)
 }
 
 // console.log(DOM.links.nav.anchor)
