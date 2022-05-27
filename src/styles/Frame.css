@@ -17,8 +17,13 @@
   margin-bottom: 10px;
 }
 
+.nav__link{
+  font-weight: regular;
+}
+
 .nav__link--current{
-  color: red;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 @media screen and (min-width: 53em){

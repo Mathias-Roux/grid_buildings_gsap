@@ -576,54 +576,12 @@ let DOM = {
         }
     }
 };
-// const timelineSettings = {
-// 	staggerValue: 0.014,
-// 	charsDuration: 0.5
-// }
-// const timeline = gsap.timeline({paused: true})
-// 	.addLabel('start')
-// 	.staggerTo( DOM.content[].chars, timelineSettings.charsDuration, {
-// 		ease: 'Power3.easeIn',
-// 		y: '-100%',
-// 		opacity: 0
-// }, timelineSettings.staggerValue, 'start') 
-// 	.staggerTo( DOM.content.duplex.chars, timelineSettings.charsDuration, {
-// 		ease: 'Power3.easeIn',
-// 		y: '-100%',
-// 		opacity: 0
-// 	}, timelineSettings.staggerValue, 'start') 
-// 	.staggerTo( DOM.content.orange.chars, timelineSettings.charsDuration, {
-// 		ease: 'Power3.easeIn',
-// 		y: '-100%',
-// 		opacity: 0
-// 	}, timelineSettings.staggerValue, 'start')
-// 	.addLabel('switchtime')
-// 	.add( () => {
-// 		DOM.content.evolution.section.classList.toggle('grid__content--current')
-// 		DOM.content.evolution.section.classList.toggle('grid__content--current')
-// 		DOM.content.evolution.section.classList.toggle('grid__content--current')
-// 	})
-// 	.set
-const links = DOM.links.nav.anchors;
-const switchContent = (index)=>{
-    // console.log(Object.keys(DOM.content)[index])
-    const selected = Object.keys(DOM.content)[index];
-    links.forEach((link)=>{
-        link.classList.remove('nav__link--current');
-    });
-    links[index].classList.add('nav__link--current');
-    if (DOM.content[selected].isVisible === true) return;
-    DOM.content[selected].isVisible = !DOM.content[selected].isVisible;
-// console.log('current',DOM.content[selected].isVisible)
-// console.log('evolution' ,DOM.content.evolution.isVisible)
-// console.log('duplex' ,DOM.content.duplex.isVisible)
-// console.log('orange' ,DOM.content.orange.isVisible)
-};
-// console.log(DOM.links.nav.anchor)
+const links = document.querySelectorAll("nav__link");
 links.forEach((link)=>{
-    link.addEventListener("click", ()=>{
-        let index = Array.from(links).indexOf(link);
-        switchContent(index);
+    link.addEventListener('click', ()=>{
+        links.forEach((x)=>x.classList.remove('nav__link--current')
+        );
+        link.classList.add('nav__link--current');
     });
 });
 
