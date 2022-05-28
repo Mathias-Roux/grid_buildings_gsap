@@ -21,7 +21,7 @@
   font-weight: regular;
 }
 
-.nav__link--current{
+.nav__link:hover{
   font-weight: bold;
   text-decoration: underline;
 }

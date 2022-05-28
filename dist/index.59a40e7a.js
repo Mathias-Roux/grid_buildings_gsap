@@ -533,29 +533,42 @@ var _splittingCellsCss = require("splitting/dist/splitting-cells.css");
 var _splitting = require("splitting");
 var _splittingDefault = parcelHelpers.interopDefault(_splitting);
 _splittingDefault.default();
+// all nav links [3]
 const links = document.querySelectorAll('.nav__link');
+// all building content [3]
 const sections = document.querySelectorAll('.grid__content');
-const changeContent = (index)=>{
-    _gsap.gsap.timeline({
-        paused: true
-    }).addLabel('start').set(sections, {
+// 'BUILDINGS' on landing page
+const intro = document.querySelector('h1 > span');
+const swapContent = (index)=>{
+    _gsap.gsap.timeline({}).addLabel('start').to(intro, {
         opacity: 0,
+        display: 'none',
+        duration: 0.5,
+        ease: 'Power2.Out'
+    }).to(sections[index], {
+        display: 'grid',
         ease: 'Power2.Out',
         duration: 0.5
-    }).to(sections[index], {
-        opacity: 1,
+    });
+};
+const initialContent = (index)=>{
+    _gsap.gsap.timeline({}).addLabel('start').to(sections[index], {
+        display: 'none',
         ease: 'Power2.Out',
-        duration: 1
+        duration: 0.5
+    }).to(intro, {
+        opacity: 1,
+        display: 'block',
+        duration: 0.5,
+        ease: 'Power2.Out'
     });
 };
 links.forEach((link, index)=>{
-    link.addEventListener('click', ()=>{
-        // remove current class for all nav__link
-        links.forEach((x)=>x.classList.remove('nav__link--current')
-        );
-        // add current class for the clicked nav__link
-        link.classList.add('nav__link--current');
-        changeContent(index);
+    link.addEventListener('mouseenter', ()=>{
+        swapContent(index);
+    });
+    link.addEventListener('mouseleave', ()=>{
+        initialContent(index);
     });
 });
 
