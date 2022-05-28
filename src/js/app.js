@@ -5,60 +5,31 @@ import Splitting from "splitting"
 
 Splitting()
 
+const links = document.querySelectorAll('.nav__link')
+const sections = document.querySelectorAll('.grid__content')
 
-console.clear()
-
-
-let DOM = {
-	content: {
-		evolution: {
-			section: document.querySelector('.evolution'),
-			get chars(){
-				return this.section.querySelectorAll('.grid__paragraph .word > .char, .whitespace')
-			},
-			get picture(){
-				return this.section.querySelector('.content__photo--c1-r1')
-			},
-			isVisible: true
-		},
-		duplex: {
-			section: document.querySelector('.duplex'),
-			get chars(){
-				return this.section.querySelectorAll('.grid__paragraph .word > .char, .whitespace')
-			},
-			get picture(){
-				return this.section.querySelector('.content__photo--c1-r1')
-			},
-			isVisible: false
-		},
-		orange: {
-			section: document.querySelector('.orange'),
-			get chars(){
-				return this.section.querySelectorAll('.grid__paragraph .word > .char, .whitespace')
-			},
-			get picture(){
-				return this.section.querySelector('.content__photo--c1-r1')
-			},
-			isVisible: false
-		}
-	},
-	links: {
-		nav: {
-			anchors: document.querySelectorAll('.nav__link'),
-			get stateElement() {
-				return this.anchor.children;
-			}
-		}
-	}
+const changeContent = index => {
+	gsap.timeline({paused: true})
+		.addLabel('start')
+		.set(sections, {
+			opacity: 0,
+			ease: 'Power2.Out',
+			duration: 0.5
+		})
+		.to(sections[index], {
+			opacity: 1,
+			ease: 'Power2.Out',
+			duration: 1
+		})
 }
 
-
-const links = document.querySelectorAll("nav__link")
-
-links.forEach( link => {
+links.forEach( (link, index) => {
 	link.addEventListener('click', () => {
+		// remove current class for all nav__link
 		links.forEach( x => x.classList.remove('nav__link--current'))
+		// add current class for the clicked nav__link
 		link.classList.add('nav__link--current')
+		changeContent(index)
 	})
 })
 
