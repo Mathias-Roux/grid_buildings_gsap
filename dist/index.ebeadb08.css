@@ -22,13 +22,13 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 10px;
 }
 
-.nav__link {
-  font-weight: regular;
+.nav__link > img {
+  width: 45px;
+  filter: grayscale(60%);
 }
 
-.nav__link:hover {
-  font-weight: bold;
-  text-decoration: underline;
+.nav__link > img:hover {
+  filter: grayscale(0%);
 }
 
 @media screen and (min-width: 53em) {

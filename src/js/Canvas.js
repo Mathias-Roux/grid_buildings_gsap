@@ -162,23 +162,6 @@ class Canvas {
       item.addEventListener("mouseenter", handleMouseEnter);
       item.addEventListener("mouseleave", handleMouseLeave);
     });
-
-    const mainNavItemMouseEnter = () => {
-      this.outerCursorSpeed = 0.8;
-      this.fillOuterCursor = true;
-      TweenMax.to(this.innerCursor, 0.2, { opacity: 0 });
-    };
-    const mainNavItemMouseLeave = () => {
-      this.outerCursorSpeed = 0.2;
-      this.fillOuterCursor = false;
-      TweenMax.to(this.innerCursor, 0.2, { opacity: 1 });
-    };
-
-    const mainNavItems = document.querySelectorAll(".content--fixed a");
-    mainNavItems.forEach(item => {
-      item.addEventListener("mouseenter", mainNavItemMouseEnter);
-      item.addEventListener("mouseleave", mainNavItemMouseLeave);
-    });
   }
 }
 
