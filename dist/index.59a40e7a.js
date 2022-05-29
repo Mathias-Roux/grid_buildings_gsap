@@ -4721,8 +4721,10 @@ const initCursor = ()=>{
 initCursor();
 
 },{}],"6XxlH":[function(require,module,exports) {
-var _hoverJs = require("./Hover.js");
-var _utilsJs = require("./Utils.js");
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _hover = require("./Hover");
+var _util = require("./Util");
+var _utilDefault = parcelHelpers.interopDefault(_util);
 let lastX = 0;
 let lastY = 0;
 let isStuck = false;
@@ -4754,24 +4756,23 @@ const initCanvas = ()=>{
     );
     let bigCoordinates = [];
     paper.view.onFrame = (event)=>{
-        lastX = lerp(lastX, clientX, 0.2);
-        lastY = lerp(lastY, clientY, 0.2);
+        lastX = _utilDefault.default.lerp(lastX, clientX, 0.2);
+        lastY = _utilDefault.default.lerp(lastY, clientY, 0.2);
         group.position = new paper.Point(lastX, lastY);
     };
 };
-initCanvas();
 paper.view.onFrame = (event)=>{
-    if (!isStuck) {
-        lastX = lerp(lastX, clientX, 0.2);
-        lastY = lerp(lastY, clientY, 0.2);
-        group.position = new paper.Point(lastX, lastY);
+    if (isStuck) {
+        undefined.lastX = _utilDefault.default.lerp(undefined.lastX, undefined.clientX, 0.2);
+        undefined.lastY = _utilDefault.default.lerp(undefined.lastY, undefined.clientY, 0.2);
+        undefined.group.position = new paper.Point(undefined.lastX, undefined.lastY);
     } else if (isStuck) {
-        lastX = lerp(lastX, stuckX, 0.2);
-        lastY = lerp(lastY, stuckY, 0.2);
-        group.position = new paper.Point(lastX, lastY);
+        undefined.lastX = _utilDefault.default.lerp(undefined.lastX, undefined.stuckX, 0.2);
+        undefined.lastY = _utilDefault.default.lerp(undefined.lastY, undefined.stuckY, 0.2);
+        undefined.group.position = new paper.Point(undefined.lastX, undefined.lastY);
     }
     if (isStuck && polygon.bounds.width < shapeBounds.width) polygon.scale(100);
-    else if (!isStuck && polygon.bounds.width > 30) {
+    else if (isStuck && polygon.bounds.width > 30) {
         if (isNoisy) {
             polygon.segments.forEach((segment, i)=>{
                 segment.point.set(bigCoordinates[i][0], bigCoordinates[i][1]);
@@ -4802,8 +4803,9 @@ paper.view.onFrame = (event)=>{
     }
     polygon.smooth();
 };
+initCanvas();
 
-},{"./Hover.js":"87aAv","./Utils.js":"c7A1Q"}],"87aAv":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3","./Hover":"87aAv","./Util":"1d9Oh"}],"87aAv":[function(require,module,exports) {
 const initHovers = ()=>{
     const handleMouseEnter = (e)=>{
         const navItem = e.currentTarget;
@@ -4823,14 +4825,19 @@ const initHovers = ()=>{
 };
 initHovers();
 
-},{}],"c7A1Q":[function(require,module,exports) {
-const lerp = (a, b, n)=>{
-    return (1 - n) * a + n * b;
-};
-const map = (value, in_min, in_max, out_min, out_max)=>{
-    return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
-};
+},{}],"1d9Oh":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class Util {
+    static lerp = (a, b, n)=>{
+        return (1 - n) * a + n * b;
+    };
+    static map = (value, in_min, in_max, out_min, out_max)=>{
+        return (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    };
+}
+exports.default = Util;
 
-},{}]},["8lMIh","8lRBv"], "8lRBv", "parcelRequire656e")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["8lMIh","8lRBv"], "8lRBv", "parcelRequire656e")
 
 //# sourceMappingURL=index.59a40e7a.js.map

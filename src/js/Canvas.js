@@ -1,5 +1,5 @@
-import './Hover.js'
-import './Utils.js'
+import './Hover'
+import Util from './Util'
 
 let lastX = 0;
 let lastY = 0;
@@ -38,29 +38,26 @@ const initCanvas = () => {
 	let bigCoordinates = []
 
 	paper.view.onFrame = event => {
-		lastX = lerp(lastX, clientX, 0.2)
-		lastY = lerp(lastY, clientY, 0.2)
+		lastX = Util.lerp(lastX, clientX, 0.2)
+		lastY = Util.lerp(lastY, clientY, 0.2)
 		group.position = new paper.Point(lastX, lastY)
 	}
 }
 
-initCanvas()
-
-
 paper.view.onFrame = event => {
-	if (!isStuck) {
-		lastX = lerp(lastX, clientX, 0.2)
-		lastY = lerp(lastY, clientY, 0.2)
-		group.position = new paper.Point(lastX, lastY)
+	if (isStuck) {
+		this.lastX = Util.lerp(this.lastX, this.clientX, 0.2)
+		this.lastY = Util.lerp(this.lastY, this.clientY, 0.2)
+		this.group.position = new paper.Point(this.lastX, this.lastY)
 	} else if (isStuck) {
-		lastX = lerp(lastX, stuckX, 0.2)
-		lastY = lerp(lastY, stuckY, 0.2)
-		group.position = new paper.Point(lastX, lastY)
+		this.lastX = Util.lerp(this.lastX, this.stuckX, 0.2)
+		this.lastY = Util.lerp(this.lastY, this.stuckY, 0.2)
+		this.group.position = new paper.Point(this.lastX, this.lastY)
 	}
 
 	if (isStuck && polygon.bounds.width < shapeBounds.width) {
 		polygon.scale(100)
-	} else if (!isStuck && polygon.bounds.width > 30) {
+	} else if (isStuck && polygon.bounds.width > 30) {
 		if (isNoisy) {
 			polygon.segments.forEach((segment, i) => {
 				segment.point.set(bigCoordinates[i][0], bigCoordinates[i][1])
@@ -94,9 +91,10 @@ paper.view.onFrame = event => {
 			segment.point.set(newX, newY)
 		})
 	}
-
 	polygon.smooth()
 }
+
+initCanvas()
 
 
 
