@@ -1,12 +1,11 @@
+import Canvas from './Canvas.js'
 import { gsap } from 'gsap'
 import "splitting/dist/splitting.css"
 import "splitting/dist/splitting-cells.css"
 import Splitting from "splitting"
 
-import './Cursor.js'
-import './Canvas.js'
-
 Splitting()
+new Canvas()
 
 // all nav links [3]
 const links = document.querySelectorAll('.nav__link')

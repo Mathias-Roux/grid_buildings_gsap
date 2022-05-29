@@ -21,14 +21,14 @@ body, body a{
   cursor: none;
 }
 
-.cursor{
+.circle-cursor{
   position: fixed;
   left: 0;
   top: 0;
   pointer-events: none;
 }
 
-.cursor--small{
+.circle-cursor--inner{
   width: 5px;
   height: 5px;
   left: -2.5px;
@@ -38,7 +38,7 @@ body, body a{
   background: white;
 }
 
-.cursor--canvas{
+.circle-cursor--outer{
   width: 100vw;
   height: 100vh;
   z-index: 12000;
