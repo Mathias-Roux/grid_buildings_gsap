@@ -3,6 +3,9 @@ import "splitting/dist/splitting.css"
 import "splitting/dist/splitting-cells.css"
 import Splitting from "splitting"
 
+import './Cursor.js'
+import './Canvas.js'
+
 Splitting()
 
 // all nav links [3]

@@ -119,8 +119,31 @@ body {
   overflow: hidden;
 }
 
-a {
-  cursor: pointer;
+body, body a {
+  cursor: none;
+}
+
+.cursor {
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.cursor--small {
+  width: 5px;
+  height: 5px;
+  z-index: 11000;
+  background: #fff;
+  border-radius: 50%;
+  top: -2.5px;
+  left: -2.5px;
+}
+
+.cursor--canvas {
+  width: 100vw;
+  height: 100vh;
+  z-index: 12000;
 }
 
 
