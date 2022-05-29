@@ -4840,7 +4840,7 @@ class Canvas {
         const handleMouseLeave = ()=>{
             this.isStuck = false;
         };
-        const linkItems = document.querySelectorAll(".browser-window__link");
+        const linkItems = document.querySelectorAll(".nav__link");
         linkItems.forEach((item)=>{
             item.addEventListener("mouseenter", handleMouseEnter);
             item.addEventListener("mouseleave", handleMouseLeave);
