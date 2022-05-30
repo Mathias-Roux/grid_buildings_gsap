@@ -99,61 +99,41 @@ gsap.set(DOM.contents.orange.charsIndex, {
 })
 
 const swapContent = (index) => {
-	gsap.timeline({})
-		.addLabel('start')
-		.staggerTo(DOM.intro.chars, 0.5, {
-			y: '100%',
-			opacity: 0,
-			ease: 'Power2.Out'
-		}, 0.014, 'start')
-		.to(DOM.contents[Object.keys(DOM.contents)[index]].picture, 0.5, {
-			x: '0',
-			opacity: 1,
-			ease: 'Power2.Out'
-		})
-		.staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsParagraph, 0.5, {
-			y: '0',
-			opacity: 1,
-			ease: 'Power2.Out'
-		}, 0.014)
-		.staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsIndex, 0.5, {
-			y: '0',
-			opacity: 1,
-			ease: 'Power2.Out'
-		}, 0.014)
+
+	let tl = gsap.timeline({paused: true, reversed: true})
+				.addLabel('start')
+				.staggerTo(DOM.intro.chars, 0.5, {
+					y: '100%',
+					opacity: 0,
+					ease: 'Power2.Out'
+				}, 0.014, 'start')
+				.to(DOM.contents[Object.keys(DOM.contents)[index]].picture, 0.5, {
+					x: '0',
+					opacity: 1,
+					ease: 'Power2.Out'
+				})
+				.staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsParagraph, 0.5, {
+					y: '0',
+					opacity: 1,
+					ease: 'Power2.Out'
+				}, 0.014)
+				.staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsIndex, 0.5, {
+					y: '0',
+					opacity: 1,
+					ease: 'Power2.Out'
+				}, 0.014)
+				
+
+	tl.reversed() ? tl.play() : tl.reverse()			
 }
 
-const initialContent = index => {
-	gsap.timeline({})
-		.addLabel('start')
-		.to(DOM.contents[Object.keys(DOM.contents)[index]].picture, 0.5, {
-			x: '-100%',
-			opacity: 0,
-			ease: 'Power2.Out'
-		}, 'start')
-		.staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsParagraph, 0.5, {
-			y: '-100%',
-			opacity: 0,
-			ease: 'Power2.Out'
-		}, 0.014)
-		.staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsIndex, 0.5, {
-			y: '-100%',
-			opacity: 0,
-			ease: 'Power2.Out'
-		}, 0.014)
-		.staggerTo(DOM.intro.chars, 0.5, {
-			y: '0',
-			opacity: 1,
-			ease: 'Power2.Out'
-		}, 0.014)
-}
 
 DOM.frame.links.forEach( (link, index) => {
 	link.addEventListener('mouseenter', () => {
 		swapContent(index)
 	})
 	link.addEventListener('mouseleave', () => {
-		initialContent(index)
+		swapContent(index)
 	})
 })
 
