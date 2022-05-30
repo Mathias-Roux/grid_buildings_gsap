@@ -15,9 +15,8 @@ h1{
   left: 50%;
   transform: translateX(-50%);
   text-transform: uppercase;
-  grid-column: 3; grid-row: 1;
   font-size: clamp(80px, 8vw, 150px);
-   overflow: hidden;
+  overflow: hidden;
 }
 
 .content__photo--c1-r1{

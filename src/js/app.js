@@ -7,24 +7,37 @@ import Splitting from "splitting"
 Splitting()
 new Canvas()
 
-// all nav links [3]
-const links = document.querySelectorAll('.nav__link')
-// all building content [3]
-const sections = document.querySelectorAll('.grid__content')
-// 'BUILDINGS' on landing page
-const intro = document.querySelector('h1 > span')
+let DOM = {
+	frame: {
+		// all nav links [3]
+		links: document.querySelectorAll('.nav__link')
+	},
+	intro: {
+		// title 'BUILDINGS' on landing page
+		title: document.querySelector('h1'),
+		get chars(){
+			return this.title.querySelectorAll('span .word > .char, .whitespace')
+		}
+	},
+	contents: {
+		// all building content [3]
+		sections: document.querySelectorAll('.grid__content')
+	}
+}
+
 
 
 const swapContent = index => {
 	gsap.timeline({})
 		.addLabel('start')
-		.to(intro, {
+		.staggerTo(DOM.intro.chars, 0.5, {
+			y: '100%',
 			opacity: 0,
-			display: 'none',
-			duration: 0.5,
 			ease: 'Power2.Out'
-		})
-		.to(sections[index], {
+		}, 0.014, 'start')
+		.to(DOM.contents.sections[index], {
+			y: '0',
+			opacity: 1,
 			display: 'grid',
 			ease: 'Power2.Out',
 			duration: 0.5
@@ -34,20 +47,21 @@ const swapContent = index => {
 const initialContent = index => {
 	gsap.timeline({})
 		.addLabel('start')
-		.to(sections[index], {
+		.to(DOM.contents.sections[index], {
+			y: '-100%',
+			opacity: 0,
 			display: 'none',
 			ease: 'Power2.Out',
 			duration: 0.5
 		})
-		.to(intro, {
+		.staggerTo(DOM.intro.chars, 0.5, {
+			y: '0',
 			opacity: 1,
-			display: 'block',
-			duration: 0.5,
 			ease: 'Power2.Out'
-		})
+		}, 0.014)
 }
 
-links.forEach( (link, index) => {
+DOM.frame.links.forEach( (link, index) => {
 	link.addEventListener('mouseenter', () => {
 		swapContent(index)
 	})
