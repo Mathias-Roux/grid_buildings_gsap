@@ -100,7 +100,7 @@ gsap.set(DOM.contents.orange.charsIndex, {
 
 const swapContent = (index) => {
 
-	let tl = gsap.timeline({paused: true, reversed: true})
+	const tl = gsap.timeline({paused: true})
 				.addLabel('start')
 				.staggerTo(DOM.intro.chars, 0.5, {
 					y: '100%',
@@ -122,18 +122,20 @@ const swapContent = (index) => {
 					opacity: 1,
 					ease: 'Power2.Out'
 				}, 0.014)
-				.reversed(false)
 
-	tl.reversed() ? tl.play() : tl.reverse()			
+				return tl			
 }
 
 
 DOM.frame.links.forEach( (link, index) => {
+
+	const animation = swapContent(index)
+
 	link.addEventListener('mouseenter', () => {
-		swapContent(index)
+		animation.play()
 	})
 	link.addEventListener('mouseleave', () => {
-		swapContent(index)
+		animation.reverse()
 	})
 })
 

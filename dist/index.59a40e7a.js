@@ -625,9 +625,8 @@ _gsap.gsap.set(DOM.contents.orange.charsIndex, {
     opacity: 0
 });
 const swapContent = (index)=>{
-    let tl = _gsap.gsap.timeline({
-        paused: true,
-        reversed: true
+    const tl = _gsap.gsap.timeline({
+        paused: true
     }).addLabel('start').staggerTo(DOM.intro.chars, 0.5, {
         y: '100%',
         opacity: 0,
@@ -644,15 +643,16 @@ const swapContent = (index)=>{
         y: '0',
         opacity: 1,
         ease: 'Power2.Out'
-    }, 0.014).reversed(false);
-    tl.reversed() ? tl.play() : tl.reverse();
+    }, 0.014);
+    return tl;
 };
 DOM.frame.links.forEach((link, index)=>{
+    const animation = swapContent(index);
     link.addEventListener('mouseenter', ()=>{
-        swapContent(index);
+        animation.play();
     });
     link.addEventListener('mouseleave', ()=>{
-        swapContent(index);
+        animation.reverse();
     });
 });
 
