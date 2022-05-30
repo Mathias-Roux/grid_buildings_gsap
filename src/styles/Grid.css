@@ -21,7 +21,6 @@ h1{
 
 .content__photo--c1-r1{
   grid-column: 1; grid-row: 1 / 5;
-  overflow: hidden;
 }
 
 .content__photo--c1-r1 > img{

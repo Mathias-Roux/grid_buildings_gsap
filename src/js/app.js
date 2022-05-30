@@ -36,23 +36,20 @@ const swapContent = index => {
 			ease: 'Power2.Out'
 		}, 0.014, 'start')
 		.to(DOM.contents.sections[index], {
-			y: '0',
-			opacity: 1,
 			display: 'grid',
-			ease: 'Power2.Out',
-			duration: 0.5
+			opacity: 1,
+			ease: 'Power2.Out'
 		})
+		
 }
 
 const initialContent = index => {
 	gsap.timeline({})
 		.addLabel('start')
 		.to(DOM.contents.sections[index], {
-			y: '-100%',
-			opacity: 0,
 			display: 'none',
-			ease: 'Power2.Out',
-			duration: 0.5
+			opacity: 0,
+			ease: 'Power2.Out'
 		})
 		.staggerTo(DOM.intro.chars, 0.5, {
 			y: '0',
