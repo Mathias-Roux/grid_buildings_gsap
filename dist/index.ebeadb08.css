@@ -44,7 +44,8 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-columns: repeat(4, 25%);
   grid-auto-rows: 19vmin;
   padding: 1.5vw;
-  display: none;
+  display: grid;
+  position: absolute;
   overflow: hidden;
 }
 
