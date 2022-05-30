@@ -122,7 +122,7 @@ const swapContent = (index) => {
 					opacity: 1,
 					ease: 'Power2.Out'
 				}, 0.014)
-				
+				.reversed(false)
 
 	tl.reversed() ? tl.play() : tl.reverse()			
 }

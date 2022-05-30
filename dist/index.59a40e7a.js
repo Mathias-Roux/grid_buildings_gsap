@@ -644,7 +644,7 @@ const swapContent = (index)=>{
         y: '0',
         opacity: 1,
         ease: 'Power2.Out'
-    }, 0.014);
+    }, 0.014).reversed(false);
     tl.reversed() ? tl.play() : tl.reverse();
 };
 DOM.frame.links.forEach((link, index)=>{
