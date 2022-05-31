@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Square+Peg&display=swap');
+
 .frame{
   display: flex;
   flex-direction: column;
@@ -13,8 +15,26 @@
   width: 300px;
 }
 
-.frame__signature, .frame__title--wrap{
+.frame__title--wrap{
   margin-bottom: 10px;
+}
+
+.frame__signature{
+  margin-bottom: 10px;
+  width: 100px;
+  transform: rotate(-16deg);
+}
+
+.frame__signature a{
+  font-family: 'Square Peg', cursive;
+  text-decoration: none;
+  color: white;
+  font-size: 30px;
+  opacity: 0.6;
+}
+
+.frame__signature a:visited{
+  color: white;
 }
 
 .nav__link > img{

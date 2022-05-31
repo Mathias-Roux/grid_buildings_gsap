@@ -589,61 +589,61 @@ let DOM = {
     }
 };
 _gsap.gsap.set(DOM.contents.evolution.picture, {
-    x: '-100%',
+    x: '-40%',
     opacity: 0
 });
 _gsap.gsap.set(DOM.contents.evolution.charsParagraph, {
-    y: '-100%',
+    y: '-50%',
     opacity: 0
 });
 _gsap.gsap.set(DOM.contents.evolution.charsIndex, {
-    y: '-100%',
+    y: '-50%',
     opacity: 0
 });
 _gsap.gsap.set(DOM.contents.duplex.picture, {
-    x: '-100%',
+    x: '-40%',
     opacity: 0
 });
 _gsap.gsap.set(DOM.contents.duplex.charsParagraph, {
-    y: '-100%',
+    y: '-50%',
     opacity: 0
 });
 _gsap.gsap.set(DOM.contents.duplex.charsIndex, {
-    y: '-100%',
+    y: '-50%',
     opacity: 0
 });
 _gsap.gsap.set(DOM.contents.orange.picture, {
-    x: '-100%',
+    x: '-40%',
     opacity: 0
 });
 _gsap.gsap.set(DOM.contents.orange.charsParagraph, {
-    y: '-100%',
+    y: '-50%',
     opacity: 0
 });
 _gsap.gsap.set(DOM.contents.orange.charsIndex, {
-    y: '-100%',
+    y: '-50%',
     opacity: 0
 });
 const swapContent = (index)=>{
     const tl = _gsap.gsap.timeline({
         paused: true
-    }).addLabel('start').staggerTo(DOM.intro.chars, 0.5, {
+    }).addLabel('start').staggerTo(DOM.intro.chars, 0.3, {
         y: '100%',
         opacity: 0,
         ease: 'Power2.Out'
-    }, 0.014, 'start').to(DOM.contents[Object.keys(DOM.contents)[index]].picture, 0.5, {
+    }, 0.014, 'start').addLabel('switch').to(DOM.contents[Object.keys(DOM.contents)[index]].picture, 0.5, {
         x: '0',
         opacity: 1,
         ease: 'Power2.Out'
-    }).staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsParagraph, 0.5, {
+    }, 'switch').staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsParagraph, 0.5, {
         y: '0',
         opacity: 1,
         ease: 'Power2.Out'
-    }, 0.014).staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsIndex, 0.5, {
+    }, 0.004, 'switch').staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsIndex, 0.5, {
         y: '0',
         opacity: 1,
         ease: 'Power2.Out'
-    }, 0.014);
+    }, 0.014, 'switch');
     return tl;
 };
 DOM.frame.links.forEach((link, index)=>{
