@@ -21,6 +21,10 @@ body, body a{
   cursor: none;
 }
 
+.char{
+  will-change: transform;
+}
+
 .circle-cursor{
   position: fixed;
   left: 0;

@@ -141,6 +141,10 @@ body, body a {
   cursor: none;
 }
 
+.char {
+  will-change: transform;
+}
+
 .circle-cursor {
   pointer-events: none;
   position: fixed;

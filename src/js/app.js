@@ -23,29 +23,23 @@ let DOM = {
 		// all building content [3]
 		evolution: {
 			section :document.querySelector('.evolution'),
+			paragraphs: document.querySelectorAll('.evolution > .grid__paragraph'),
 			get picture(){
 				return this.section.querySelector('.content__photo--c1-r1')
-			},
-			get chars(){
-				return this.section.querySelectorAll('.grid__paragraph .word > .char, .whitespace')
 			}
 		},
 		duplex: {
 			section: document.querySelector('.duplex'),
+			paragraphs: document.querySelectorAll('.duplex > .grid__paragraph'),
 			get picture(){
 				return this.section.querySelector('.content__photo--c1-r1')
-			},
-			get chars(){
-				return this.section.querySelectorAll('.grid__paragraph .word > .char, .whitespace')
 			}
 		},
 		orange: {
 			section: document.querySelector('.orange'),
+			paragraphs: document.querySelectorAll('.orange > .grid__paragraph'),
 			get picture(){
 				return this.section.querySelector('.content__photo--c1-r1')
-			},
-			get chars(){
-				return this.section.querySelectorAll('.grid__paragraph .word > .char, .whitespace')
 			}
 		}
 	}
@@ -56,24 +50,21 @@ gsap.set(DOM.contents.evolution.picture, {
 	x: '-40%',
 	opacity: 0
 })
-gsap.set(DOM.contents.evolution.chars, {
-	y: '50%',
+gsap.set(DOM.contents.evolution.paragraphs, {
 	opacity: 0
 })
 gsap.set(DOM.contents.duplex.picture, {
 	x: '-40%',
 	opacity: 0
 })
-gsap.set(DOM.contents.duplex.chars, {
-	y: '50%',
+gsap.set(DOM.contents.duplex.paragraphs, {
 	opacity: 0
 })
 gsap.set(DOM.contents.orange.picture, {
 	x: '-40%',
 	opacity: 0
 })
-gsap.set(DOM.contents.orange.chars, {
-	y: '50%',
+gsap.set(DOM.contents.orange.paragraphs, {
 	opacity: 0
 })
 
@@ -92,11 +83,10 @@ const swapContent = (index) => {
 					opacity: 1,
 					ease: 'Power2.Out'
 				}, 'switch')
-				.staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].chars, 0.5, {
-					y: '0',
+				.to(DOM.contents[Object.keys(DOM.contents)[index]].paragraphs, 0.5, {
 					opacity: 1,
 					ease: 'Power2.Out'
-				}, 0.004, 'switch')
+				}, 'switch')
 
 				return tl			
 }
