@@ -62,7 +62,7 @@ h1, h2, h3, h4, h5, h6 {
   grid-gap: 1em;
   grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 19vmin;
-  padding: 1.5vw;
+  padding: 0 1.5vw;
   display: grid;
   position: absolute;
   overflow: hidden;
@@ -90,7 +90,8 @@ h1 {
   overflow: hidden;
 }
 
-.grid__paragraph, .grid__index {
+.grid__paragraph {
+  align-items: center;
   padding: 0 0 0 2vw;
   display: flex;
   overflow: hidden;

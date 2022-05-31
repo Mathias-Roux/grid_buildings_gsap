@@ -555,11 +555,8 @@ let DOM = {
             get picture () {
                 return this.section.querySelector('.content__photo--c1-r1');
             },
-            get charsParagraph () {
+            get chars () {
                 return this.section.querySelectorAll('.grid__paragraph .word > .char, .whitespace');
-            },
-            get charsIndex () {
-                return this.section.querySelectorAll('.grid__index .word > .char, .whitespace');
             }
         },
         duplex: {
@@ -567,11 +564,8 @@ let DOM = {
             get picture () {
                 return this.section.querySelector('.content__photo--c1-r1');
             },
-            get charsParagraph () {
+            get chars () {
                 return this.section.querySelectorAll('.grid__paragraph .word > .char, .whitespace');
-            },
-            get charsIndex () {
-                return this.section.querySelectorAll('.grid__index .word > .char, .whitespace');
             }
         },
         orange: {
@@ -579,11 +573,8 @@ let DOM = {
             get picture () {
                 return this.section.querySelector('.content__photo--c1-r1');
             },
-            get charsParagraph () {
+            get chars () {
                 return this.section.querySelectorAll('.grid__paragraph .word > .char, .whitespace');
-            },
-            get charsIndex () {
-                return this.section.querySelectorAll('.grid__index .word > .char, .whitespace');
             }
         }
     }
@@ -592,36 +583,24 @@ _gsap.gsap.set(DOM.contents.evolution.picture, {
     x: '-40%',
     opacity: 0
 });
-_gsap.gsap.set(DOM.contents.evolution.charsParagraph, {
-    y: '-50%',
-    opacity: 0
-});
-_gsap.gsap.set(DOM.contents.evolution.charsIndex, {
-    y: '-50%',
+_gsap.gsap.set(DOM.contents.evolution.chars, {
+    y: '50%',
     opacity: 0
 });
 _gsap.gsap.set(DOM.contents.duplex.picture, {
     x: '-40%',
     opacity: 0
 });
-_gsap.gsap.set(DOM.contents.duplex.charsParagraph, {
-    y: '-50%',
-    opacity: 0
-});
-_gsap.gsap.set(DOM.contents.duplex.charsIndex, {
-    y: '-50%',
+_gsap.gsap.set(DOM.contents.duplex.chars, {
+    y: '50%',
     opacity: 0
 });
 _gsap.gsap.set(DOM.contents.orange.picture, {
     x: '-40%',
     opacity: 0
 });
-_gsap.gsap.set(DOM.contents.orange.charsParagraph, {
-    y: '-50%',
-    opacity: 0
-});
-_gsap.gsap.set(DOM.contents.orange.charsIndex, {
-    y: '-50%',
+_gsap.gsap.set(DOM.contents.orange.chars, {
+    y: '50%',
     opacity: 0
 });
 const swapContent = (index)=>{
@@ -635,15 +614,11 @@ const swapContent = (index)=>{
         x: '0',
         opacity: 1,
         ease: 'Power2.Out'
-    }, 'switch').staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsParagraph, 0.5, {
+    }, 'switch').staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].chars, 0.5, {
         y: '0',
         opacity: 1,
         ease: 'Power2.Out'
-    }, 0.004, 'switch').staggerTo(DOM.contents[Object.keys(DOM.contents)[index]].charsIndex, 0.5, {
-        y: '0',
-        opacity: 1,
-        ease: 'Power2.Out'
-    }, 0.014, 'switch');
+    }, 0.004, 'switch');
     return tl;
 };
 DOM.frame.links.forEach((link, index)=>{
